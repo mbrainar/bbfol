@@ -17,8 +17,10 @@ peak_season = True
 simple = False
 
 # Set hours
-weekdays = "Monday through Thursday"
-weekends = "Friday through Sunday"
+weekday_hours = "Sunday through Thursday"
+weekend_hours = "Friday and Saturday"
+weekday_rates = "Monday through Thursday"
+weekend_rates = "Friday through Sunday"
 weekday_start = "5:30pm"
 weekday_end = "9:30pm"
 weekend_start = "5:30pm"
@@ -28,15 +30,15 @@ weekend_end = "10:30pm"
 weekday_car = "$20"
 weekend_car = "$30"
 prices_dict = {
-    "Cars, {}".format(weekdays):"$20",
-    "Cars, {}".format(weekends):"$30",
+    "Cars, {}".format(weekday_rates):"$20",
+    "Cars, {}".format(weekend_rates):"$30",
     "Limos, Large Vans, and Motorhomes":"$40",
     "Motor Coaches, up to 30 people":"$60",
     "Buses and Large Motor Coaches":"$100"
 }
 prices = (
-    "For Cars, {}, the cost is $20".format(weekdays),
-    "For Cars, {}, the cost is $30".format(weekends),
+    "For Cars, {}, the cost is $20".format(weekday_rates),
+    "For Cars, {}, the cost is $30".format(weekend_rates),
     "For Limos, Large Vans, and Motorhomes, the cost is $40",
     "For Motor Coaches, up to 30 people, the cost is $60",
     "For Buses and Large Motor Coaches, the cost is $100"
@@ -79,10 +81,13 @@ def main_menu():
 
 # Simple script
 def main_simple():
-    say("{} we are open from {} until {}, and the cost is {} per car.".format(weekdays, weekday_start, weekday_end, weekday_car), {
+    say("Monday through Thursday we are open from {} until {}, and the cost is {} per car.".format(weekday_start, weekday_end, weekday_car), {
         "voice":voice
     })
-    say("{} we are open from {} until {}, and the cost is {} per car.".format(weekends, weekend_start, weekend_end, weekend_car), {
+    say("Friday and Saturday we are open from {} until {}, and the cost is {} per car.".format(weekend_start, weekend_end, weekend_car), {
+        "voice":voice
+    })
+    say("Sunday we are open from {} until {}, and the cost is {} per car.".format(weekday_start, weekday_end, weekend_car), {
         "voice":voice
     })
     say("For group rates and available discounts, please stay on the line for more information.", {
@@ -114,10 +119,10 @@ def main():
             "timeout":10.0
         })
         if selection.value == "1":
-            say("{} we are open from {} until {}.".format(weekdays, weekday_start, weekday_end), {
+            say("{} we are open from {} until {}.".format(weekday_hours, weekday_start, weekday_end), {
                 "voice":voice
             })
-            say("{} we are open from {} until {}.".format(weekends, weekend_start, weekend_end), {
+            say("{} we are open from {} until {}.".format(weekend_hours, weekend_start, weekend_end), {
                 "voice":voice
             })
             wait(1000)
