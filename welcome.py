@@ -1,4 +1,5 @@
-
+answer()
+log("********** Incoming call from " + str(currentCall.callerID))
 # Select a voice: Allison, Ava (Default), Evelyn, Samantha, Susan, Zoe
 voice = "Zoe"
 # Test voices
@@ -125,6 +126,7 @@ def main():
             say("{} we are open from {} until {}.".format(weekend_hours, weekend_start, weekend_end), {
                 "voice":voice
             })
+            log("********** Caller asked for hours")
             wait(1000)
             if main_menu() == False:
                 exit = True
@@ -139,6 +141,7 @@ def main():
             say("Senior living and assisted living homes may be eligible for discounted rates. When prompted, return to the main menu to speak to someone about discounts.", {
                 "voice":voice
             })
+            log("********** Caller asked for prices")
             wait(1000)
             if main_menu() == False:
                 exit = True
@@ -152,6 +155,7 @@ def main():
             say("Buses, please use the campground's main entrance.", {
                 "voice":voice
             })
+            log("********** Caller asked for directions")
             wait(1000)
             if main_menu() == False:
                 exit = True
@@ -163,6 +167,7 @@ def main():
                 "timeout":30.0,
                 "onTimeout": lambda event : say("Sorry, but nobody answered.", {"voice":voice}),
             })
+            log("********** Call was transferred")
             exit = True
         else:
             pass
@@ -178,3 +183,6 @@ if greeting(peak_season) == True:
         main_simple()
     else:
         main()
+
+hangup()
+log("********** Call ended")
