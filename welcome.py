@@ -55,7 +55,7 @@ def greeting(peak_season):
         say("Thank you for calling Butch Bando's Fantasy of Lights.", {
             "voice":voice
         })
-        say("Come see our new, all L.E.D. light display, now through January 1st, at the Alum Creek State Park Campgrounds.", {
+        say("Come see our new, all L.E.D. light display, at the Alum Creek State Park Campgrounds, now through January 1st, including Christmas Eve, Christmas day, New Year's Eve, and New Year's day.", {
             "voice":voice
         })
         return True
@@ -112,7 +112,7 @@ def main_simple():
 # Main Script
 def main():
     exit = False
-    while exit == False:
+    while exit == False and currentCall.isActive():
         wait(1000)
         selection = ask("For hours, please press 1. For show prices, please press 2. For location and directions, please press 3. To speak to someone, please press 0.", {
             "voice":voice,
@@ -124,6 +124,9 @@ def main():
                 "voice":voice
             })
             say("{} we are open from {} until {}.".format(weekend_hours, weekend_start, weekend_end), {
+                "voice":voice
+            })
+            say("We are open on Christmas Eve, Christmas day, New Year's Eve, and New Year's Day.", {
                 "voice":voice
             })
             log("********** Caller asked for hours")
@@ -138,6 +141,9 @@ def main():
                 say("{}".format(p), {
                     "voice":voice
                 })
+            say("We accept cash and credit cards, for your convenience.", {
+                "voice":voice
+            })
             say("Senior living and assisted living homes may be eligible for discounted rates. When prompted, return to the main menu to speak to someone about discounts.", {
                 "voice":voice
             })
