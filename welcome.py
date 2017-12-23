@@ -55,7 +55,7 @@ def greeting(peak_season):
         say("Thank you for calling Butch Bando's Fantasy of Lights.", {
             "voice":voice
         })
-        say("Come see our new, all L.E.D. light display, at the Alum Creek State Park Campgrounds, now through January 1st, including Christmas Eve, Christmas day, New Year's Eve, and New Year's day.", {
+        say("Come see our new, all L.E.D. light displays, at the Alum Creek State Park Campgrounds, now through January 1st, including Christmas Eve, Christmas day, New Year's Eve, and New Year's day.", {
             "voice":voice
         })
         return True
