@@ -52,12 +52,15 @@ outbound_enable = True
 # Default greeting
 def greeting(peak_season):
     if peak_season == True:
-        say("Thank you for calling Butch Bando's Fantasy of Lights.", {
+        '''say("Thank you for calling Butch Bando's Fantasy of Lights.", {
             "voice":voice
         })
         say("Come see our new, all L.E.D. light displays, at the Alum Creek State Park Campgrounds, now through January 1st, including Christmas Eve, Christmas day, New Year's Eve, and New Year's day.", {
             "voice":voice
-        })
+        })'''
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/intro.mp3")
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/leddisplay.mp3")
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/dates.mp3")
         return True
     else:
         '''say("Thank you for calling Butch Bando's Fantasy of Lights.", {
@@ -72,9 +75,13 @@ def greeting(peak_season):
 
 # Return to main menu
 def main_menu():
-    selection = ask("Please press star to return to the main menu.", {
+    '''selection = ask("Please press star to return to the main menu.", {
         "choices":"*",
         "voice":voice,
+        "timeout":5.0
+    })'''
+    selection = ask("http://hosting.tropo.com/5051089/www/bbfol/clips/mainmenu.mp3", {
+        "choices":"*",
         "timeout":5.0
     })
     if selection.value == "*":
@@ -116,13 +123,20 @@ def main():
     exit = False
     while exit == False and currentCall.isActive():
         wait(1000)
-        selection = ask("For hours, please press 1. For show prices, please press 2. For location and directions, please press 3. To speak to someone, please press 0.", {
+        '''selection = ask("For hours, please press 1. For show prices, please press 2. For location and directions, please press 3. To speak to someone, please press 0.", {
             "voice":voice,
+            "choices":"1,2,3,0",
+            "timeout":10.0
+        })'''
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/hours1.mp3")
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/prices2.mp3")
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/directions3.mp3")
+        selection = ask("http://hosting.tropo.com/5051089/www/bbfol/clips/speak0b.mp3", {
             "choices":"1,2,3,0",
             "timeout":10.0
         })
         if selection.value == "1":
-            say("{} we are open from {} until {}.".format(weekday_hours, weekday_start, weekday_end), {
+            '''say("{} we are open from {} until {}.".format(weekday_hours, weekday_start, weekday_end), {
                 "voice":voice
             })
             say("{} we are open from {} until {}.".format(weekend_hours, weekend_start, weekend_end), {
@@ -130,13 +144,15 @@ def main():
             })
             say("We are open on Christmas Eve, Christmas day, New Year's Eve, and New Year's Day.", {
                 "voice":voice
-            })
+            })'''
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/sunthurshours.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/frisathours.mp3")
             log("********** Caller asked for hours")
             wait(1000)
             if main_menu() == False:
                 exit = True
         elif selection.value == "2":
-            say("Our show prices are as follows:", {
+            '''say("Our show prices are as follows:", {
                 "voice":voice
             })
             for p in prices:
@@ -148,13 +164,20 @@ def main():
             })
             say("Senior living and assisted living homes may be eligible for discounted rates. When prompted, return to the main menu to speak to someone about discounts.", {
                 "voice":voice
-            })
+            })'''
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/showprices.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/carsmonthurscost.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/carsfrisuncost.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/limosvansmotorhomescost.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/motorcoach.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/buslargemotorcoach.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/discounts.mp3")
             log("********** Caller asked for prices")
             wait(1000)
             if main_menu() == False:
                 exit = True
         elif selection.value == "3":
-            say("Our show is located at the Alum Creek State Park Campgrounds, at 3311 South Old State Road, in Delaware Ohio.", {
+            '''say("Our show is located at the Alum Creek State Park Campgrounds, at 3311 South Old State Road, in Delaware Ohio.", {
                 "voice":voice
             })
             say("Cars, please enter through the service entrance, a half mile south of the campground's main entrance.", {
@@ -162,15 +185,19 @@ def main():
             })
             say("Buses, please use the campground's main entrance.", {
                 "voice":voice
-            })
+            })'''
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/location.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/carsentrance.mp3")
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/busentrance.mp3")
             log("********** Caller asked for directions")
             wait(1000)
             if main_menu() == False:
                 exit = True
         elif selection.value == "0":
-            say("Ok, we are transfering you now.", {
+            '''say("Ok, we are transfering you now.", {
                 "voice":voice
-            })
+            })'''
+            say("http://hosting.tropo.com/5051089/www/bbfol/clips/transfering.mp3")
             transfer(outbound_number, {
                 "timeout":30.0,
                 "onTimeout": lambda event : say("Sorry, but nobody answered.", {"voice":voice}),
@@ -181,9 +208,10 @@ def main():
             pass
 
 
-    say("Thank you for calling Butch Bando's Fantasy of Lights. Please come see us soon.", {
+    '''say("Thank you for calling Butch Bando's Fantasy of Lights. Please come see us soon.", {
         "voice":voice
-    })
+    })'''
+    say("http://hosting.tropo.com/5051089/www/bbfol/clips/thanksforcalling.mp3")
 
 # Execute main script
 if greeting(peak_season) == True:
