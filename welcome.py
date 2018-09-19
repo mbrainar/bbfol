@@ -12,7 +12,7 @@ for v in voices:
 """
 
 # Select peak-season (True) or off-season (False)
-peak_season = True
+peak_season = False
 
 # Select simple outbound message or complex options
 simple = False
@@ -60,12 +60,14 @@ def greeting(peak_season):
         })
         return True
     else:
-        say("Thank you for calling Butch Bando's Fantasy of Lights.", {
+        '''say("Thank you for calling Butch Bando's Fantasy of Lights.", {
             "voice":voice
-        })
-        say("We hope you enjoyed the twenty-seventeen show. Please come back and see us next year.", {
+        })'''
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/intro.mp3")
+        '''say("We hope you enjoyed the twenty-seventeen show. Please come back and see us next year.", {
             "voice":voice
-        })
+        })'''
+        say("http://hosting.tropo.com/5051089/www/bbfol/clips/endof2017.mp3")
         return False
 
 # Return to main menu
